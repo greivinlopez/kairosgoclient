@@ -40,13 +40,13 @@ func prettyPrint(data map[string]interface{}) string {
 	return string(jsondata)
 }
 
-func decrypt(data, priv string) (string, error) {
+func decrypt(data, privateKey string) (string, error) {
 	data2, err := base64.StdEncoding.DecodeString(data)
 	if err != nil {
 		return "", err
 	}
 
-	block, _ := pem.Decode([]byte(priv))
+	block, _ := pem.Decode([]byte(privateKey))
 	key, err := x509.ParsePKCS1PrivateKey(block.Bytes)
 	if err != nil {
 		return "", err
