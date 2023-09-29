@@ -103,10 +103,6 @@ func login() (challenge string, err error) {
 }
 
 func token(challenge string) (token string, err error) {
-	///Attempt to request a token: http://localhost:4055/api/v1/token
-	/*
-	   With payload:
-	     Here is your token: */
 	url, err := url.JoinPath(baseURL, "token")
 	if err != nil {
 		return "", err
